@@ -25,6 +25,7 @@ import time
 import os
 import psutil
 
+
 def bubble(int_list: List[int]) -> Tuple[List[int], float]:
     """
     This function uses bubble sort to sort a list of integers and measures CPU percent usage.
@@ -38,16 +39,16 @@ def bubble(int_list: List[int]) -> Tuple[List[int], float]:
     """
     data = list(int_list)
 
-    #Initializes CPU measurement to 0
+    # Initializes CPU measurement to 0
     psutil.cpu_percent(interval=None)
 
     n = len(data)
     for i in range(n):
-        for j in range(0, n-i-1):
-            if data[j] > data[j+1]:
-                data[j], data[j+1] = data[j+1], data[j]
+        for j in range(0, n - i - 1):
+            if data[j] > data[j + 1]:
+                data[j], data[j + 1] = data[j + 1], data[j]
 
-    #Measures CPU usage percent since initialization
+    # Measures CPU usage percent since initialization
     cpu_usage = psutil.cpu_percent(interval=0.1)
 
     return data, cpu_usage
