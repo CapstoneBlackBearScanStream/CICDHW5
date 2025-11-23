@@ -18,7 +18,7 @@
 
 import pytest
 import numpy as np
-from basic_sort_BBScanStream397.int_sort import bubble  # , quick, insertion
+from basic_sort_BBScanStream397.int_sort import bubble, quick  # insertion
 
 
 def is_sorted(values):
@@ -40,7 +40,7 @@ def int_lists():
 def test_bubble(int_lists):
     """
     Testing for bubble sort. This sorting algorithm should return a sorted list of integers and CPU usage metrics.
-    The test asserts that the provided lists are sorted and the the CPU usage percent is over 0.
+    The test asserts that the provided lists are sorted and the the CPU usage percent is 0 or greater.
     The CPU usage percent is then printed.
 
     Args:
@@ -58,7 +58,26 @@ def test_bubble(int_lists):
 
 
 def test_quick(int_lists):
-    assert True
+    """
+    Testing for quick sort.
+
+    This method should return a sorted list and the time (in ms) it took for the sorting algorithm.
+    This test asserts that the lists are sorted, and the time elapsed is greater than 0.
+    Finally, the time elapsed is printed.
+    
+    Args:
+        int_list List[int]: List of integers to sort
+
+    Returns:
+        List[int]: the sorted list
+        float: the time elapsed from the start and end of sorting in miliseconds
+    """
+
+    for lst in int_lists:
+        sorted_quick, time = quick(lst)
+        assert is_sorted(sorted_quick)
+        assert time > 0
+        print(f"Time elapsed: {time}")
 
 
 def test_insertion(int_lists):
