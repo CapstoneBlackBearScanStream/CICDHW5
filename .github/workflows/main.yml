@@ -48,7 +48,7 @@ jobs:
           pip install -r requirements-dev.txt
       - name: Test with pytest
         run: |
-          python -m pytest
+          python -m pytest -s -v
 
   packaging:
     # only run the packaging if testing passed
