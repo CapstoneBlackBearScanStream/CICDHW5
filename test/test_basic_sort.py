@@ -18,23 +18,34 @@
 
 import pytest
 import numpy as np
+from basic_sort_BBScanStream397.int_sort import bubble, quick, insertion
 
 
-def is_sorted(self, int_list):
+def is_sorted(values):
     """
     Testing oracle.
     """
-    return True
+    return all(values[i] <= values[i + 1] for i in range(len(values) - 1))
 
 
 @pytest.fixture
 def int_lists():
+    """
+    Testing data for all of the tests.
+    """
     # fixture which creates testing data for all tests
     return [[3, 2, 1], [1, 1, 1], np.random.randint(low=-10, high=200, size=5)]
 
 
 def test_bubble(int_lists):
-    assert True
+    """
+    Testing for bubble sort. This sorting algorith should return a sorted list of integers and CPU usage metrics.
+    The test asserts that the provided lists are sorted and the the CPU usage percent is over 0.
+    """
+    for lst in int_lists:
+        sorted_bubble, cpu_usage = bubble(lst)
+        assert is_sorted(sorted_bubble)
+        assert cpu_usage >= 0.0
 
 
 def test_quick(int_lists):
