@@ -39,13 +39,22 @@ def int_lists():
 
 def test_bubble(int_lists):
     """
-    Testing for bubble sort. This sorting algorith should return a sorted list of integers and CPU usage metrics.
+    Testing for bubble sort. This sorting algorithm should return a sorted list of integers and CPU usage metrics.
     The test asserts that the provided lists are sorted and the the CPU usage percent is over 0.
+    The CPU usage percent is then printed.
+
+    Args:
+        int_list List[int]: List of integers to sort.
+
+    Returns:
+        sorted_list list[int]: A list containing the sorted integers.
+        cpu_usage float: CPU usage as a float.
     """
     for lst in int_lists:
         sorted_bubble, cpu_usage = bubble(lst)
         assert is_sorted(sorted_bubble)
         assert cpu_usage >= 0.0
+        print(f"CPU Percent: {cpu_usage}")
 
 
 def test_quick(int_lists):
