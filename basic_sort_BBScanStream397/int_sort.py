@@ -21,9 +21,8 @@ This module sorts lists of integers using bubble, quick, and insertion sort and 
 """
 
 from __future__ import annotations
-import time
-import os
 import psutil
+from typing import List, Tuple
 
 
 def bubble(int_list: List[int]) -> Tuple[List[int], float]:
