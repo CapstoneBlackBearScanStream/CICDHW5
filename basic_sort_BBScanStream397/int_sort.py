@@ -17,15 +17,40 @@
 # =========================================================================
 
 """
-This module sorts lists of integers...
+This module sorts lists of integers using bubble, quick, and insertion sort and measures resource usage.
 """
 
+from __future__ import annotations
+import time
+import os
+import psutil
 
-def bubble(int_list):
+def bubble(int_list: List[int]) -> Tuple[List[int], float]:
     """
-    bubble docstring
+    This function uses bubble sort to sort a list of integers and measures CPU percent usage.
+
+    Args:
+        int_list List[int]: List of integers to sort.
+
+    Returns:
+        sorted_list list[int]: A list containing the sorted integers.
+        cpu_usage float: CPU usage as a float.
     """
-    print("bubble sort")
+    data = list(int_list)
+
+    #Initializes CPU measurement to 0
+    psutil.cpu_percent(interval=None)
+
+    n = len(data)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if data[j] > data[j+1]:
+                data[j], data[j+1] = data[j+1], data[j]
+
+    #Measures CPU usage percent since initialization
+    cpu_usage = psutil.cpu_percent(interval=0.1)
+
+    return data, cpu_usage
 
 
 def quick(int_list):
