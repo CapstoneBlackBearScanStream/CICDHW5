@@ -113,8 +113,42 @@ def __partition__(int_list, first, last):
     return i + 1
 
 
-def insertion(int_list):
+def insertion(int_list: List[int]) -> Tuple[List[int], float]:
     """
-    insertion docstring
+    This function sorts a list of integers using insertion sort and measures memory usage.
+
+    Args:
+        int_list (List[int]): List of integers to sort.
+
+    Returns:
+        sorted_list (List[int]): Sorted version of the list.
+        memory_usage (float): Memory used during sorting (in MB), measured with psutil.
     """
-    print("insertion sort")
+    process = psutil.Process()
+
+    # Copy list so original is unchanged
+    data = list(int_list)
+
+    # Baseline memory before sorting
+    mem_before = process.memory_info().rss / (1024 * 1024)
+
+    # Insertion Sort Algorithm
+    for i in range(1, len(data)):
+        key = data[i]
+        j = i - 1
+
+        # Move elements that are greater than key
+        while j >= 0 and data[j] > key:
+            data[j + 1] = data[j]
+            j -= 1
+
+        data[j + 1] = key
+
+    # Memory after sorting
+    mem_after = process.memory_info().rss / (1024 * 1024)
+
+    memory_used = mem_after - mem_before
+    if memory_used < 0:
+        memory_used = 0  # OS fluctuations can show negative change; clamp to 0
+
+    return data, memory_used
