@@ -63,8 +63,8 @@ def test_quick(int_lists):
 
     This method should return a sorted list and the time (in ms) it took for the sorting algorithm.
     This test asserts that the lists are sorted, and the time elapsed is greater than 0.
-    Finally, the time elapsed is printed.
-    
+    The time elapsed is printed.
+
     Args:
         int_list List[int]: List of integers to sort
 

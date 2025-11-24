@@ -78,7 +78,7 @@ def quick(int_list: List[int]) -> Tuple[List[int], float]:
 
     # Return the list and time in ms to make it easier to read
     return sorted_list, (end_time - start_time) * 1000
-    
+
 
 def __quickSort__(int_list: List[int], first: int, last: int):
     if first < last:
@@ -88,6 +88,7 @@ def __quickSort__(int_list: List[int], first: int, last: int):
         # Recursive call
         __quickSort__(int_list, first, partition_index - 1)
         __quickSort__(int_list, partition_index + 1, last)
+
 
 # This is an implementation of Lomuto Partition
 def __partition__(int_list, first, last):
@@ -109,6 +110,7 @@ def __partition__(int_list, first, last):
     # Finally, swap the ith + 1 element and the last element in the list
     int_list[i + 1], int_list[last] = int_list[last], int_list[i + 1]
     return i + 1
+
 
 def insertion(int_list):
     """
