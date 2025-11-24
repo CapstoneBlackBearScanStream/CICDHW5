@@ -18,7 +18,7 @@
 
 import pytest
 import numpy as np
-from basic_sort_BBScanStream397.int_sort import bubble, quick  # insertion
+from basic_sort_BBScanStream397.int_sort import bubble, quick, insertion
 
 
 def is_sorted(values):
@@ -81,4 +81,25 @@ def test_quick(int_lists):
 
 
 def test_insertion(int_lists):
-    assert True
+    """
+    Testing for insertion sort.
+
+    This method should return a sorted list and the memory usage (in MB)
+    measured during the sorting algorithm. The test asserts that the
+    returned list is sorted and that the measured memory usage is
+    non-negative. The memory usage is printed.
+
+    Args:
+        int_list List[int]: List of integers to sort
+
+    Returns:
+        List[int]: Sorted list
+        float: Memory used in MB
+    """
+
+    for lst in int_lists:
+        sorted_insertion, mem_usage = insertion(lst)
+        assert is_sorted(sorted_insertion)
+        assert mem_usage >= 0.0
+        print(f"Memory used (MB): {mem_usage}")
+
