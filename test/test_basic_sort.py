@@ -102,4 +102,3 @@ def test_insertion(int_lists):
         assert is_sorted(sorted_insertion)
         assert mem_usage >= 0.0
         print(f"Memory used (MB): {mem_usage}")
-
