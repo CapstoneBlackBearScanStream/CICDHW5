@@ -20,7 +20,6 @@
 This module sorts lists of integers using bubble, quick, and insertion sort and measures resource usage.
 """
 
-from __future__ import annotations
 import psutil
 import time
 from typing import List, Tuple
